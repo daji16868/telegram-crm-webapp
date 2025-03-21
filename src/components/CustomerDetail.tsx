@@ -1,74 +1,71 @@
 import React, { useState } from 'react';
 import { Customer } from '../types/customer';
-import CustomerEditForm from './CustomerEditForm';
+import { CustomerEditForm } from './CustomerEditForm';
 
 interface CustomerDetailProps {
   customer: Customer;
   onClose: () => void;
+  onEdit: (customer: Customer) => void;
+  onDelete: (customer: Customer) => void;
 }
 
-const CustomerDetail: React.FC<CustomerDetailProps> = ({ customer, onClose }) => {
+export const CustomerDetail: React.FC<CustomerDetailProps> = ({
+  customer,
+  onClose,
+  onEdit,
+  onDelete
+}) => {
   const [isEditing, setIsEditing] = useState(false);
 
   if (isEditing) {
-    return <CustomerEditForm customer={customer} onClose={() => setIsEditing(false)} />;
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-lg p-6 max-w-md w-full">
+          <CustomerEditForm
+            customer={customer}
+            onSubmit={(data) => {
+              onEdit({ ...customer, ...data });
+              setIsEditing(false);
+            }}
+            onCancel={() => setIsEditing(false)}
+          />
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-      <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-medium text-gray-900">客户详情</h3>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-500"
-          >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-lg p-6 max-w-md w-full">
+        <h3 className="text-lg font-medium mb-4">客户详情</h3>
+        <div className="space-y-2">
+          <p><span className="font-medium">姓名：</span>{customer.name}</p>
+          <p><span className="font-medium">电话：</span>{customer.phone}</p>
+          <p><span className="font-medium">邮箱：</span>{customer.email}</p>
+          <p><span className="font-medium">备注：</span>{customer.notes || '无'}</p>
+          <p><span className="font-medium">创建时间：</span>{new Date(customer.createdAt).toLocaleString('zh-CN')}</p>
         </div>
-        
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">姓名</label>
-            <p className="mt-1 text-gray-900">{customer.name}</p>
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700">电话</label>
-            <p className="mt-1 text-gray-900">{customer.phone}</p>
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700">邮箱</label>
-            <p className="mt-1 text-gray-900">{customer.email}</p>
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700">备注</label>
-            <p className="mt-1 text-gray-900">{customer.notes}</p>
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700">创建时间</label>
-            <p className="mt-1 text-gray-900">
-              {new Date(customer.createdAt).toLocaleString()}
-            </p>
-          </div>
-        </div>
-        
-        <div className="mt-6">
+        <div className="mt-6 flex space-x-4">
           <button
             onClick={() => setIsEditing(true)}
-            className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="flex-1 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
           >
-            编辑客户信息
+            编辑
+          </button>
+          <button
+            onClick={() => onDelete(customer)}
+            className="flex-1 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+          >
+            删除
+          </button>
+          <button
+            onClick={onClose}
+            className="flex-1 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+          >
+            关闭
           </button>
         </div>
       </div>
     </div>
   );
-};
-
-export default CustomerDetail; 
+}; 
