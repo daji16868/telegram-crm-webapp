@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Customer, CustomerFormData } from '../types/customer';
 import { useCustomer } from '../context/CustomerContext';
 

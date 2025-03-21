@@ -1,46 +1,51 @@
 declare global {
   interface Window {
-    Telegram?: {
-      WebApp: {
-        ready(): void;
-        expand(): void;
-        close(): void;
-        sendData(data: string): void;
-        enableClosingConfirmation(): void;
-        colorScheme: 'light' | 'dark';
-        MainButton: {
-          text: string;
-          color: string;
-          textColor: string;
-          isVisible: boolean;
-          isActive: boolean;
-          show(): void;
-          hide(): void;
-          onClick(callback: () => void): void;
-          offClick(callback: () => void): void;
-          enable(): void;
-          disable(): void;
-          setParams(params: {
-            text?: string;
-            color?: string;
-            text_color?: string;
-            is_visible?: boolean;
-            is_active?: boolean;
-          }): void;
-        };
-        initDataUnsafe: {
-          user?: {
-            id: number;
-            first_name: string;
-            last_name?: string;
-            username?: string;
-            language_code?: string;
-          };
-        };
-      };
+    Telegram: {
+      WebApp: TelegramWebApp;
     };
   }
 }
+
+interface TelegramWebApp {
+  ready(): void;
+  expand(): void;
+  close(): void;
+  sendData(data: string): void;
+  MainButton: {
+    text: string;
+    color: string;
+    textColor: string;
+    isVisible: boolean;
+    isActive: boolean;
+    show(): void;
+    hide(): void;
+    onClick(callback: () => void): void;
+    offClick(callback: () => void): void;
+    enable(): void;
+    disable(): void;
+    setParams(params: {
+      text?: string;
+      color?: string;
+      text_color?: string;
+      is_visible?: boolean;
+      is_active?: boolean;
+    }): void;
+  };
+  enableClosingConfirmation(): void;
+  disableClosingConfirmation(): void;
+  colorScheme: 'light' | 'dark';
+  initDataUnsafe: {
+    user?: {
+      id: number;
+      first_name: string;
+      last_name?: string;
+      username?: string;
+      language_code?: string;
+    };
+  };
+}
+
+export const WebApp = window.Telegram?.WebApp;
 
 export function initTelegramApp() {
   const webApp = window.Telegram?.WebApp;
@@ -67,6 +72,9 @@ export function initTelegramApp() {
   if (webApp.colorScheme === 'dark') {
     document.documentElement.classList.add('dark');
   }
+  
+  // 展开 WebApp
+  webApp.expand();
   
   return webApp;
 }

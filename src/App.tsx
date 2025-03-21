@@ -1,38 +1,61 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { CustomerForm } from './components/CustomerForm'
-import { CustomerFormData } from './types/customer'
-import { initTelegramApp } from './utils/telegram'
+import { CustomerList } from './components/CustomerList'
+import { Customer, CustomerFormData } from './types/customer'
+import { WebApp } from './utils/telegram'
 
 const App: React.FC = () => {
-  useEffect(() => {
-    // 初始化 Telegram WebApp
-    initTelegramApp();
-  }, []);
+  const [customers, setCustomers] = useState<Customer[]>([])
+  const [isFormVisible, setIsFormVisible] = useState(true)
+  const [editingCustomer, setEditingCustomer] = useState<Customer | null>(null)
 
-  const handleSubmit = (data: CustomerFormData) => {
-    // 发送数据到 Telegram Bot
-    if (window.Telegram?.WebApp) {
-      const webApp = window.Telegram.WebApp;
-      webApp.sendData(JSON.stringify({
-        action: 'add',
-        customer: data
-      }));
-      webApp.close();
+  const handleSubmit = (formData: CustomerFormData) => {
+    if (editingCustomer) {
+      // 更新现有客户
+      const updatedCustomers = customers.map(customer =>
+        customer.id === editingCustomer.id
+          ? { ...customer, ...formData }
+          : customer
+      )
+      setCustomers(updatedCustomers)
+      setEditingCustomer(null)
+    } else {
+      // 添加新客户
+      const newCustomer: Customer = {
+        id: Date.now().toString(),
+        ...formData,
+        createdAt: new Date().toISOString()
+      }
+      setCustomers([...customers, newCustomer])
     }
-  };
+    setIsFormVisible(false)
+    WebApp.close()
+  }
+
+  const handleEdit = (customer: Customer) => {
+    setEditingCustomer(customer)
+    setIsFormVisible(true)
+  }
+
+  const handleDelete = (customer: Customer) => {
+    const updatedCustomers = customers.filter(c => c.id !== customer.id)
+    setCustomers(updatedCustomers)
+  }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="bg-white shadow rounded-lg">
-          <div className="px-4 py-5 sm:p-6">
-            <h1 className="text-lg font-medium text-gray-900 mb-4">
-              添加新客户
-            </h1>
-            <CustomerForm onSubmit={handleSubmit} />
-          </div>
-        </div>
-      </div>
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      {isFormVisible ? (
+        <CustomerForm
+          onSubmit={handleSubmit}
+          initialData={editingCustomer || undefined}
+        />
+      ) : (
+        <CustomerList
+          customers={customers}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
+      )}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { Customer, CustomerFormData } from '../types/customer';
+import { Customer } from '../types/customer';
 import { sendDataToTelegram } from './telegram';
 
 // 同步类型定义
