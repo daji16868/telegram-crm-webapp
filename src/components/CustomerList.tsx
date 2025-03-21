@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Customer } from '../types/customer';
+import type { Customer } from '../types/customer';
 
 interface CustomerListProps {
   customers: Customer[];
