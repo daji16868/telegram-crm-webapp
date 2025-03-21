@@ -1,0 +1,129 @@
+
+src/components/CustomerEditForm.tsx:1:27 - error TS6133: 'useEffect' is declared but its value is never read.
+
+1 import React, { useState, useEffect } from 'react';
+                            ~~~~~~~~~
+
+src/components/CustomerList.tsx:5:11 - error TS6196: 'Customer' is declared but never used.
+
+5 interface Customer {
+            ~~~~~~~~
+
+src/components/CustomerList.tsx:80:11 - error TS2322: Type '{ customer: Customer; onClose: () => void; onEdit: () => void; }' is not assignable to type 'Intri
+src/components/CustomerList.tsx:80:11 - error TS2322: Type '{ customer: Customer; onClose: () => void; onEdit: () => void; }' is not assignable to type 'IntrinsicAttributes & CustomerDetailProps'.
+  Property 'onEdit' does not exist on type 'IntrinsicAttributes & CustomerDetailProps'.
+
+80           onEdit={() => {/* TODO: 实现编辑功能 */}}
+             ~~~~~~
+
+src/utils/telegramSync.ts:1:20 - error TS6133: 'CustomerFormData' is declared but its value is never read.
+
+1 import { Customer, CustomerFormData } from '../types/customer';
+                     ~~~~~~~~~~~~~~~~
+
+src/utils/telegramTest.ts:1:10 - error TS6133: 'initTelegramApp' is declared but its value is never read.
+
+1 import { initTelegramApp, expandWebApp } from './telegram';
+           ~~~~~~~~~~~~~~~
+
+src/utils/telegramTest.ts:16:22 - error TS2339: Property 'platform' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: str
+src/utils/telegramTest.ts:16:22 - error TS2339: Property 'platform' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { .
+src/utils/telegramTest.ts:16:22 - error TS2339: Property 'platform' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { ...; }): void; }; initDataUnsafe: { ...; }; }'.
+
+16     platform: webApp.platform,
+                        ~~~~~~~~
+
+src/utils/telegramTest.ts:18:25 - error TS2339: Property 'themeParams' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: 
+src/utils/telegramTest.ts:18:25 - error TS2339: Property 'themeParams' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: 
+src/utils/telegramTest.ts:18:25 - error TS2339: Property 'themeParams' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { ...; }): void; }; initDataUnsafe: { ...; }; }'.
+
+18     themeParams: webApp.themeParams,
+                           ~~~~~~~~~~~
+
+src/utils/telegramTest.ts:19:28 - error TS2339: Property 'viewportHeight' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(dat
+src/utils/telegramTest.ts:19:28 - error TS2339: Property 'viewportHeight' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(param
+src/utils/telegramTest.ts:19:28 - error TS2339: Property 'viewportHeight' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { ...; }): void; }; initDataUnsafe: { ...; }; }'.
+
+19     viewportHeight: webApp.viewportHeight,
+                              ~~~~~~~~~~~~~~
+
+src/utils/telegramTest.ts:20:34 - error TS2339: Property 'viewportStableHeight' does not exist on type '{ ready(): void; expand(): void; close(): void; sendDa
+src/utils/telegramTest.ts:20:34 - error TS2339: Property 'viewportStableHeight' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams
+src/utils/telegramTest.ts:20:34 - error TS2339: Property 'viewportStableHeight' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { ...; }): void; }; initDataUnsafe: { ...; }; }'.
+
+20     viewportStableHeight: webApp.viewportStableHeight,
+                                    ~~~~~~~~~~~~~~~~~~~~
+
+src/utils/telegramTest.ts:21:24 - error TS2339: Property 'isExpanded' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: s
+src/utils/telegramTest.ts:21:24 - error TS2339: Property 'isExpanded' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: {
+src/utils/telegramTest.ts:21:24 - error TS2339: Property 'isExpanded' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { ...; }): void; }; initDataUnsafe: { ...; }; }'.
+
+21     isExpanded: webApp.isExpanded,
+                          ~~~~~~~~~~
+
+src/utils/telegramTest.ts:22:25 - error TS2339: Property 'headerColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: 
+src/utils/telegramTest.ts:22:25 - error TS2339: Property 'headerColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: 
+src/utils/telegramTest.ts:22:25 - error TS2339: Property 'headerColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { ...; }): void; }; initDataUnsafe: { ...; }; }'.
+
+22     headerColor: webApp.headerColor,
+                           ~~~~~~~~~~~
+
+src/utils/telegramTest.ts:23:29 - error TS2339: Property 'backgroundColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(da
+src/utils/telegramTest.ts:23:29 - error TS2339: Property 'backgroundColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(para
+src/utils/telegramTest.ts:23:29 - error TS2339: Property 'backgroundColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { ...; }): void; }; initDataUnsafe: { ...; }; }'.
+
+23     backgroundColor: webApp.backgroundColor,
+                               ~~~~~~~~~~~~~~~
+
+src/utils/telegramTest.ts:26:43 - error TS2339: Property 'start_param' does not exist on type '{ user?: { id: number; first_name: string; last_name?: string |
+src/utils/telegramTest.ts:26:43 - error TS2339: Property 'start_param' does not exist on type '{ user?: { id: number; first_name: string; last_name?: string | undefined; username?: string | undefined; language_code?: string | undefined; } | undefined; }'.
+
+26       start_param: webApp.initDataUnsafe?.start_param,
+                                             ~~~~~~~~~~~
+
+src/utils/telegramTest.ts:27:41 - error TS2339: Property 'auth_date' does not exist on type '{ user?: { id: number; first_name: string; last_name?: string | u
+src/utils/telegramTest.ts:27:41 - error TS2339: Property 'auth_date' does not exist on type '{ user?: { id: number; first_name: string; last_name?: string | undefined; username?: string | undefined; language_code?: string | undefined; } | undefined; }'.
+
+27       auth_date: webApp.initDataUnsafe?.auth_date,
+                                           ~~~~~~~~~
+
+src/utils/telegramTest.ts:28:36 - error TS2339: Property 'hash' does not exist on type '{ user?: { id: number; first_name: string; last_name?: string | undefi
+src/utils/telegramTest.ts:28:36 - error TS2339: Property 'hash' does not exist on type '{ user?: { id: number; first_name: string; last_name?: string | undefined; username?: string | undefined; language_code?: string | undefined; } | undefined; }'.
+
+28       hash: webApp.initDataUnsafe?.hash
+                                      ~~~~
+
+src/utils/telegramTest.ts:69:25 - error TS2339: Property 'themeParams' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: 
+src/utils/telegramTest.ts:69:25 - error TS2339: Property 'themeParams' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: 
+src/utils/telegramTest.ts:69:25 - error TS2339: Property 'themeParams' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { ...; }): void; }; initDataUnsafe: { ...; }; }'.
+
+69     themeParams: webApp.themeParams
+                           ~~~~~~~~~~~
+
+src/utils/telegramTest.ts:73:10 - error TS2339: Property 'setHeaderColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(dat
+src/utils/telegramTest.ts:73:10 - error TS2339: Property 'setHeaderColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(param
+src/utils/telegramTest.ts:73:10 - error TS2339: Property 'setHeaderColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { ...; }): void; }; initDataUnsafe: { ...; }; }'.
+
+73   webApp.setHeaderColor('#2481cc');
+            ~~~~~~~~~~~~~~
+
+src/utils/telegramTest.ts:74:10 - error TS2339: Property 'setBackgroundColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData
+src/utils/telegramTest.ts:74:10 - error TS2339: Property 'setBackgroundColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(p
+src/utils/telegramTest.ts:74:10 - error TS2339: Property 'setBackgroundColor' does not exist on type '{ ready(): void; expand(): void; close(): void; sendData(data: string): void; enableClosingConfirmation(): void; colorScheme: "light" | "dark"; MainButton: { text: string; color: string; ... 9 more ...; setParams(params: { ...; }): void; }; initDataUnsafe: { ...; }; }'.
+
+74   webApp.setBackgroundColor('#f5f5f5');
+            ~~~~~~~~~~~~~~~~~~
+
+
+Found 18 errors in 4 files.
+
+Errors  Files
+     1  src/components/CustomerEditForm.tsx:1
+     2  src/components/CustomerList.tsx:5
+     1  src/utils/telegramSync.ts:1
+    14  src/utils/telegramTest.ts:1
+npm error code 2
+npm error path /Users/lbdj/telegrambot
+npm error command failed
+npm error command sh -c npm run build
+npm error A complete log of this run can be found in: /Users/lbdj/.npm/_logs/2025-03-21T20_28_43_087Z-debug-0.log
