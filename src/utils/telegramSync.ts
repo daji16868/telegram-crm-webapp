@@ -32,4 +32,11 @@ export const syncUpdateCustomer = (customer: Customer) => {
 // 删除客户时同步
 export const syncDeleteCustomer = (customer: Customer) => {
   syncWithTelegram('delete', customer);
+};
+
+export const syncCustomers = (customers: Customer[]) => {
+  sendDataToTelegram({
+    action: 'sync',
+    customers
+  });
 }; 
